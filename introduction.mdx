@@ -1,43 +1,53 @@
+---
+title: 'Overview'
+description: 'Learn about the main services in ONDC AdNet'
+---
 
 
-# Next.js App Router
-
-Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
-
-Under the hood, Next.js also abstracts and automatically configures tooling needed for React, like bundling, compiling, and more. This allows you to focus on building your application instead of spending time with configuration.
-
-Whether you're an individual developer or part of a larger team, Next.js can help you build interactive, dynamic, and fast React applications.
-
-
-## Main Features
-
-
-| Feature | Description |
-|---------|-------------|
-| [Routing](https://nextjs.org/docs/app/building-your-application/routing) | A file-system based router built on top of Server Components that supports layouts, nested routing, loading states, error handling, and more. |
-| [Rendering](https://nextjs.org/docs/app/building-your-application/rendering) | Client-side and Server-side Rendering with Client and Server Components. Further optimized with Static and Dynamic Rendering on the server with Next.js. Streaming on Edge and Node.js runtimes. |
-| [Data Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching) | Simplified data fetching with async/await in Server Components, and an extended fetch API for request memoization, data caching and revalidation. |
-| [Styling](https://nextjs.org/docs/app/building-your-application/styling) | Support for your preferred styling methods, including CSS Modules, Tailwind CSS, and CSS-in-JS |
-| [Optimizations](https://nextjs.org/docs/app/building-your-application/optimizing) | Image, Fonts, and Script Optimizations to improve your application's Core Web Vitals and User Experience. |
-| [TypeScript](https://nextjs.org/docs/app/building-your-application/configuring/typescript) | Improved support for TypeScript, with better type checking and more efficient compilation, as well as custom TypeScript Plugin and type checker. |
+# AdNet Services Overview
+Yardstick ONDC AdNet comprises a suite of services built on top of the Open Network for Digital Commerce (ONDC) protocol. These services are designed to enhance the advertising and commerce ecosystem within the ONDC network.
 
 
 
+## AdNet Services Overview
+
+AdNet Services consist of three main components:
+
+1. **Seller AdNet App**: Tailored for ONDC Seller Apps, this component enables sellers to:
+   - Create and manage advertising campaigns from their Seller Inventory
+   - Target specific audiences with keywords
+   - Track Ad performance over time
+
+<br />
+
+2. **Buyer AdNet App**: Designed for ONDC Buyer Apps, this component allows buyers to:
+   - Create and manage Ad Units
+   - Integrate these Ad Units into their applications
+   - Select from a variety of Ad Formats: Search, Display and Menu 
+
+<br />
 
 
-## How to Use These Docs
-
-On the left side of the screen, you'll find the docs navbar. The pages of the docs are organized sequentially, from basic to advanced, so you can follow them step-by-step when building your application. However, you can read them in any order or skip to the pages that apply to your use case.
-
-On the right side of the screen, you'll see a table of contents that makes it easier to navigate between sections of a page. If you need to quickly find a page, you can use the search bar at the top, or the search shortcut (Ctrl+K or Cmd+K).
-
-To get started, check out the [Installation guide](https://nextjs.org/docs/getting-started/installation).
+3. **Ad Auction Service**: Core Service that handles Ad Delivery from Seller Inventory to the Buyer App. It performs:
+    - Real Time Bidding of Ads based on Buyer Context and Ad Unit
+    - Tracking of Ad Impressions and Clicks
+    - Budget Management for Sellers
 
 
-<hr />
-
-<br /> <br />
+<br />
 
 
 
-[Get started with installation](/docs/getting-started/installation)
+
+## Update your docs
+
+Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+
+<CardGroup cols={2}>
+  <Card title="Apps" icon="mobile" href="/apps">
+    Links to the Deployed AdNet Applications
+  </Card>
+  <Card title="Development" icon="code" href="/development">
+    Get started with Development of AdNet Services.
+  </Card>
+</CardGroup>
