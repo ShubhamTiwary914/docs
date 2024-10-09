@@ -1,98 +1,176 @@
 ---
 title: 'Development'
-description: 'Learn how to preview changes locally'
+description: 'Learn how to set up and run AdNet applications locally'
 ---
 
-<Info>
-  **Prerequisite** You should have installed Node.js (version 18.10.0 or
-  higher).
-</Info>
+# AdNet Development Guide
 
-Step 1. Install Mintlify on your OS:
+This guide will help you set up and run each of the AdNet applications locally. Make sure you have Node.js (version 16.x or 18.x) installed on your system before proceeding.
 
-<CodeGroup>
+## Seller AdNet Desktop
 
-```bash npm
-npm i -g mintlify
-```
+<Card title="GitHub Repository" icon="github" href="https://github.com/ondc-projects/Adnet-Desktop">
+  View the source code on GitHub
+</Card>
 
-```bash yarn
-yarn global add mintlify
-```
+To set up the Seller AdNet Desktop application:
 
-</CodeGroup>
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ondc-projects/Adnet-Desktop.git
+   cd Adnet-Desktop
+   ```
 
-Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+   or
+   ```bash
+   npm install
+   ```
 
-```bash
-mintlify dev
-```
+3. Run the development server:
+   ```bash
+   yarn dev
+   ```
+   or
+   ```bash
+   npm run dev
+   ```
 
-The documentation website is now available at `http://localhost:3000`.
+The application should now be running on `http://localhost:3000`.
 
-### Custom Ports
+## Seller AdNet Mobile (for restaurants)
 
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
+<Card title="GitHub Repository" icon="github" href="https://github.com/ondc-projects/AdNet">
+  View the source code on GitHub
+</Card>
 
-```bash
-mintlify dev --port 3333
-```
+To set up the Seller AdNet Mobile application:
 
-You will see an error like this if you try to run Mintlify in a port that's already taken:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ondc-projects/AdNet.git
+   cd AdNet
+   ```
 
-```md
-Error: listen EADDRINUSE: address already in use :::3000
-```
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+   or
+   ```bash
+   npm install
+   ```
 
-## Mintlify Versions
+3. Run the development server:
+   ```bash
+   yarn dev
+   ```
+   or
+   ```bash
+   npm run dev
+   ```
 
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
+The application should now be running on `http://localhost:3000`.
 
-<CodeGroup>
+## Buyer AdNet Desktop
 
-```bash npm
-npm i -g mintlify@latest
-```
+<Card title="GitHub Repository" icon="github" href="https://github.com/ondc-projects/ONDC_SSP">
+  View the source code on GitHub
+</Card>
 
-```bash yarn
-yarn global upgrade mintlify
-```
+To set up the Buyer AdNet Desktop application:
 
-</CodeGroup>
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ondc-projects/ONDC_SSP.git
+   cd ONDC_SSP
+   ```
 
-## Deployment
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+   or
+   ```bash
+   npm install
+   ```
 
-<Tip>
-  Unlimited editors available under the [Startup
-  Plan](https://mintlify.com/pricing)
-</Tip>
+3. Run the development server:
+   ```bash
+   yarn dev
+   ```
+   or
+   ```bash
+   npm run dev
+   ```
 
-You should see the following if the deploy successfully went through:
+The application should now be running on `http://localhost:3000`.
 
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
+## Buyer AdNet Desktop (Minimal)
+
+<Card title="GitHub Repository" icon="github" href="https://github.com/ShubhamTiwary914/SSP_Minimal">
+  View the source code on GitHub
+</Card>
+
+To set up the Minimal Buyer AdNet Desktop application:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ShubhamTiwary914/SSP_Minimal.git
+   cd SSP_Minimal
+   ```
+
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+   or
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+3. Run the development server:
+   ```bash
+   yarn dev
+   ```
+   or
+   ```bash
+   npm run dev
+   ```
+
+The application should now be running on `http://localhost:3000`.
+
+## ADX Node (Backend)
+
+<Card title="GitHub Repository" icon="github" href="https://github.com/ondc-projects/AdX_node">
+  View the source code on GitHub
+</Card>
+
+To set up the ADX Node backend application:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ondc-projects/AdX_node.git
+   cd AdX_node
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm start
+   ```
+
+The backend server should now be running on the default port (usually 3000 or 8080, check the console output for the exact port).
 
 ## Troubleshooting
 
-Here's how to solve some common problems when working with the CLI.
+If you encounter any issues while setting up or running these applications, please refer to the respective GitHub repositories for specific troubleshooting guides or open an issue in the appropriate repository.
 
-<AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
-  </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
-
-Repeat step 3.
-
-  </Accordion>
-  <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
-  </Accordion>
-</AccordionGroup>
-
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+Remember to check the `README.md` file in each repository for any additional setup instructions or environment-specific configurations.

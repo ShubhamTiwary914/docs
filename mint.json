@@ -32,6 +32,8 @@
     }
   ],
  
+
+
   "navigation": [
     {
       "group": "Get Started",
@@ -42,14 +44,9 @@
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Integrations",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "integrations/overview"
       ]
     },
     {
@@ -67,6 +64,9 @@
       ]
     }
   ],
+
+
+
   "footerSocials": {
     "x": "https://x.com/mintlify",
     "github": "https://github.com/mintlify",
