@@ -1,0 +1,58 @@
+---
+title: 'Overview'
+description: 'Learn about the Ads are Delivered from Seller to Buyer via the Ad Net Services'
+---
+
+
+## Table of Contents
+
+| Section | Description |
+|---------|-------------|
+| [System Overview](#system-overview) | High-level overview of the AdNet system |
+| [Key Functionalities](#key-functionalities) | Detailed explanation of core functionalities |
+| [1. Catalog Fetching](#1-catalog-fetching-for-ad-campaigns) | How catalogs are fetched for ad campaigns |
+| [2. Ad Auction Process](#2-ad-auction-process) | Details of the ad auction mechanism |
+| [3. Ad Delivery](#3-ad-delivery-to-buyer-apps) | Process of delivering ads to buyer apps |
+
+
+
+<br />
+
+## System Overview
+
+![High Level System Overview](URL_TO_SYSTEM_OVERVIEW_IMAGE)
+
+The Yardstick AdNet system facilitates ad exchange between Seller and Buyer Apps within the ONDC ecosystem. This documentation focuses on the backend services of all apps and their interactions.
+
+
+
+## Key Functionalities
+
+### 1. Catalog Fetching for Ad Campaigns
+
+- BPP creates ad campaigns
+- BPP sends catalog to DSP and sets bid pricing for items
+- DSP fetches catalog from BPP using ONDC `/search` API
+- DSP sends catalog and bidding parameters to ADX
+
+### 2. Ad Auction Process
+
+- ADX fetches catalog from DSP
+- ADX stores catalog in two parts:
+  - Full product details in database
+  - Ad metadata in cache
+- Ad auction process:
+  - Retrieve ads from cache based on keywords/location
+  - Rank ads based on metrics, relevance, and match
+  - Set price for bid winners (second-price auction)
+  - Fetch full results from database for response
+
+### 3. Ad Delivery to Buyer Apps
+
+- BAP creates ad unit
+- BAP integrates AdNet SDK script
+- Ad delivery triggered by:
+  - Page loads (display ads, menu ads)
+  - Events (search ads)
+- SDK calls ADX to fetch auction winners
+- SDK renders ads in BAP

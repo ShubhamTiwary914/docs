@@ -27,6 +27,10 @@
   },
   "tabs": [
     {
+      "name": "Documentation",
+      "url": "/"
+    },
+    {
       "name": "API Reference",
       "url": "api-reference"
     }
@@ -38,29 +42,38 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "apps",
-        "development"
+        "get_started/introduction",
+        "get_started/apps",
+        "get_started/development"
       ]
     },
     {
-      "group": "Integrations",
+      "group": "Ad Delivery Flow",
       "pages": [
-        "integrations/overview"
+        "ad_delivery/overview",
+        "ad_delivery/seller_catalog",
+        "ad_delivery/ad_auction",
+        "ad_delivery/buyer_delivery"
       ]
     },
+    {
+      "group": "Buyer AdNet",
+      "pages": [
+        "buyer_adnet/overview"
+      ]
+    },
+    {
+      "group": "Seller AdNet",
+      "pages": [
+        "seller_adnet/overview"
+      ]
+    },
+
+
     {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
       ]
     }
   ],

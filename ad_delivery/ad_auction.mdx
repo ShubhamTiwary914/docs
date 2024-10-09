@@ -1,0 +1,105 @@
+---
+title: 'Ad Auction'
+description: 'Learn about the Ad Auction Mechanism'
+---
+
+
+
+## Overview
+
+There are three types of ads, each focusing on different aspects:
+
+1. **Search**: Clear intent (keywords) - [Source](URL_TO_SEARCH_SOURCE)
+2. **Menu**: Proximity (gps, city, state) - [Source](URL_TO_MENU_SOURCE)
+3. **Display**: Indirect intent (user segmentation category - proximity for now) - [Source](URL_TO_DISPLAY_SOURCE)
+
+The auction process involves:
+1. An initial filter to fetch a small set of relevant ads from the cached data.
+2. Ranking of the selected ads to determine 'n' winners.
+3. Budgeting after the auction ends (when no ads are left to process or TTL runs out).
+
+
+<br /> <br />
+
+
+# Ad Auction Process
+
+## 1. Parameters
+
+The ad auction process is initiated on the `/ad/fetch/` endpoint. (Reference: [Source](URL_TO_SOURCE))
+
+### Auction Parameters
+
+```json 
+{
+    	keywords: string,
+    	ttl: number | 1000,
+    	floorBid: float
+    	city: string,
+    	state: string,
+    	gps: lat,lon,
+    	slots: number | 1,
+    	adType: enum(search, display, menu)
+}
+```
+
+
+
+<br />
+
+
+## 2. Pre-Auction Filter
+
+The filter depends on the type of ad:
+
+### For Keywords / Category (String):
+- A search index on keywords is created at ad creation (Inverted Search Index).
+- Fuzzy search up to "n" characters (default=3) runs on the user's keywords match.
+- Prefix search is also performed.
+
+### For Proximity (Geo):
+- A Geo Spatial index is created at ad creation.
+- Proximity search for "n" kms is run (default=5).
+
+
+
+<br />
+
+
+## 3. Keywords Ads Ranking Formula
+
+
+```latex
+KQS = (Similarity Score Similarity Weight)
+AQS = (CTR 0.4 + CR 0.4 + Recency 0.2) (1 + log(1 + Impressions / 1000))
+QS = KQS 0.3 + AQS 0.6 + PQS 0.1
+Ad Rank = Max CPC Bid QS
+
+```
+
+
+
+Where:
+- KQS: Keyword Similarity Score
+- AQS: Ad Quality Score
+- PQS: Provider Quality Score (0.5)
+- CTR (Click Through Rate) = Clicks / Impressions
+- CR (Conversion Rate) = Orders / Clicks
+- Recency = exp(-Days_Since_Last_Impression / 30)
+
+
+<br />
+
+
+## 4. Setting Bid Pricing for Winners
+
+The auction follows the Generalized Second Price Auction (GSP) model:
+
+1. The 1st bidder gets the first slot, the 2nd gets the second slot, and so on.
+2. The highest bidder pays the price bid by the second-highest bidder.
+3. The second-highest pays the price bid by the third-highest, and so on.
+
+### Exception:
+- If the price bid of the (n-1) bidder is more than the (n) bidder, or
+- If the (n-1) bidder doesn't exist,
+- Then the (n) bidder pays their own price bid.

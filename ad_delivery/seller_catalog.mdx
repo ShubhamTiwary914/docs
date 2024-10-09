@@ -1,0 +1,110 @@
+---
+title: 'Seller Catalog Flow'
+description: 'How ONDC Seller Catalog is fetched and pushed for Auctions'
+---
+
+
+
+## 1. Catalog Fetching (BPP → DSP)
+
+## Goal
+The catalog is fetched from BPP's providers (stores) using ONDC API onto DSP.
+
+![Seller Fetch Catalog Process](/images/seller-fetch-catalog.png)
+
+## Process Flow
+
+### 1. DSP Client → Server
+
+- API `/search` call is made
+- Initializes an SSE (Server-Sent Events) Connection
+- The unique `message_id` maps out which client made the request for SSE Connection
+
+Example of the payload:
+
+```json
+{
+  	context: {
+         //other-details 
+    	    message_id: messageId,
+  	},
+  	message: {
+    	    intent: {
+            provider: {
+        	    descriptor: {
+          	      name: "Provider/Store Name"
+               }
+            }
+    	    }
+     }
+};
+
+```
+
+### 2. DSP Server → BPP
+
+- A map of `message_id` → SSE Connection is created
+- When `/search` is received → pass the call onto BPP's `/search`
+
+### 3. BPP → DSP Server
+
+- Webhook `/neo/on_search` receives responses from BPP
+- Forwards responses to DSP Server's `/on_search`
+
+### 4. DSP Server's `/on_search` → DSP Client SSE Listener
+
+- After receiving data in DSP Server's `/on_search`, the response payload contains the `message_id`
+- This `message_id` is mapped to the corresponding SSE Connection of the client
+- DSP Server sends the response to DSP Client's SSE Listener with the Providers data from required BPP's Providers
+
+## Important Note
+
+The SSE Connection is initiated by the client, and the server terminates it after a TTL (Time To Live) limit (default = 30 seconds). This approach is necessary because ONDC responses can arrive in different stream intervals, not all at once.
+
+## Key Points
+
+| Component | Action |
+|-----------|--------|
+| DSP Client | Initiates `/search` call and SSE connection |
+| DSP Server | Maps `message_id` to SSE connections, forwards requests to BPP |
+| BPP | Processes `/search` request, sends responses to `/neo/on_search` |
+| DSP Server | Receives responses, maps to correct client, forwards data |
+| DSP Client | Receives catalog data through SSE Listener |
+
+This process ensures efficient and real-time catalog fetching from BPP to DSP, accommodating the asynchronous nature of ONDC responses.
+
+
+<br /> <br />
+
+## 2. Catalog Push (DSP → ADX)
+
+After fetching the catalog from seller apps, we pass it onto the AdNet server (ADX). Here's how this process works:
+
+### DSP AD Campaign
+
+1. From the fetched Catalog, extract `message['bpp_providers']` as it contains the item details needed for the "Menu".
+2. Set the bidding object, defining campaign details for that set of products (see schema below).
+
+### DSP → ADX
+
+1. Push the prepared data to the `/dsp/createAd/` endpoint of ADX.
+
+### Schema of Required Ad Products
+
+For detailed schema information, refer to the [Source](URL_TO_SCHEMA_DOCUMENTATION).
+
+### Endpoint Controller
+
+For implementation details of the endpoint controller, refer to the [Source](URL_TO_CONTROLLER_DOCUMENTATION).
+
+## Process Flow
+
+| Step | Action |
+|------|--------|
+| 1 | DSP extracts `bpp_providers` from fetched catalog |
+| 2 | DSP sets bidding object for campaign details |
+| 3 | DSP pushes data to ADX's `/dsp/createAd/` endpoint |
+| 4 | ADX processes the received catalog and campaign data |
+
+This process ensures that the catalog fetched from seller apps is efficiently passed to the AdNet server (ADX) for further processing and ad campaign management.
+
