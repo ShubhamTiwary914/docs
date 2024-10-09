@@ -1,71 +1,34 @@
----
-title: Introduction
-description: 'Welcome to the home of your new documentation'
----
+## Mintlify Documentation for AdNet ONDC Projects
+<br />
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
 
-## Setting up
+### Recommended Docs & References
+- Learn README Syntax: [Github README Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- Mintlify Global Settings: [Docs](https://mintlify.com/docs/settings/global)
+- Config in Mintlify:  [Docs](https://mintlify.com/docs/settings/navigation)
+- Page Title and Metadata:  [Docs](https://mintlify.com/docs/page)
 
-The first step to world-class documentation is setting up your editing environments.
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+<br />
 
-## Make it yours
+### Making Updates to Docs
 
-Update your docs to your brand and add valuable content for the best user conversion.
+1. Clone the repo
+```
+   git clone https://github.com/ondc-projects/docs.git
+```
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+
+2. Install Mintlify Dev (Local Preview)
+```
+   npm i -g mintlify
+```
+
+3. See Changes Locally
+```
+  mintlify dev
+```
+
+<br />
+
+Make Changes and push to Repo, They appear up on [Yardstick ONDC Docs](https://yardstick-e01ac469.mintlify.app)
