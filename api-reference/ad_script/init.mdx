@@ -1,0 +1,69 @@
+---
+title: "Initialize Ad"
+api: "POST {host}/ad/select/"
+description: "This endpoint initializes an ad based on the provided order details. (Currently same as select)"
+---
+
+### Body
+
+<ParamField body="context" type="object">
+  <Expandable title="context">
+    <ParamField body="domain" type="string">
+      The domain of the transaction (e.g., "ONDC:RET10").
+    </ParamField>
+    <ParamField body="country" type="string">
+      The country code (e.g., "IND").
+    </ParamField>
+    <ParamField body="city" type="string">
+      The city code (e.g., "std:080").
+    </ParamField>
+    <ParamField body="action" type="string">
+      The action being performed (e.g., "select").
+    </ParamField>
+    <ParamField body="core_version" type="string">
+      The core version of the API (e.g., "1.2.0").
+    </ParamField>
+    <ParamField body="bap_id" type="string">
+      The Buyer App Platform ID.
+    </ParamField>
+    <ParamField body="bap_uri" type="string">
+      The Buyer App Platform URI.
+    </ParamField>
+    <ParamField body="transaction_id" type="string">
+      A unique identifier for the transaction.
+    </ParamField>
+    <ParamField body="message_id" type="string">
+      A unique identifier for the message.
+    </ParamField>
+    <ParamField body="timestamp" type="string">
+      The timestamp of the request.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="message" type="object">
+  <Expandable title="message">
+    <ParamField body="order" type="object">
+      <Expandable title="order">
+        <ParamField body="provider" type="object">
+          <Expandable title="provider">
+            <ParamField body="id" type="string">
+              The ID of the provider.
+            </ParamField>
+          </Expandable>
+        </ParamField>
+        <ParamField body="items" type="array">
+          <Expandable title="items">
+            <ParamField body="id" type="string">
+              The ID of the item.
+            </ParamField>
+          </Expandable>
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response
+
+The response will contain the initialized ad based on the provided order details.

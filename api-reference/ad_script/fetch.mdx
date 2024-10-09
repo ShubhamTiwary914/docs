@@ -1,0 +1,43 @@
+---
+title: "Fetch Ads"
+api: "GET {host}/ad/fetch/"
+description: "This endpoint fetches ads based on the provided parameters."
+---
+
+### Query Parameters
+
+<ParamField query="keywords" type="string">
+  Keywords for ad targeting.
+</ParamField>
+
+<ParamField query="ttl" type="number" default="1000">
+  Time to live for the ad request.
+</ParamField>
+
+<ParamField query="floorBid" type="float" default="0">
+  Minimum bid price for the ads.
+</ParamField>
+
+<ParamField query="city" type="string">
+  City for location-based targeting.
+</ParamField>
+
+<ParamField query="state" type="string">
+  State for location-based targeting.
+</ParamField>
+
+<ParamField query="gps" type="string">
+  GPS coordinates for location-based targeting.
+</ParamField>
+
+<ParamField query="slots" type="number" default="1">
+  Number of ad slots to fetch.
+</ParamField>
+
+<ParamField query="adType" type="string" default="search">
+  Type of ad to fetch (e.g., search, display, menu).
+</ParamField>
+
+### Response
+
+The response will contain the fetched ads based on the provided parameters.
