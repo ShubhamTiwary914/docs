@@ -1,0 +1,58 @@
+---
+title: 'Models'
+description: 'Buyer AdNet API Model'
+---
+
+
+### Ad Unit Schema
+```JSON
+    {
+        "AdUnit": {
+            "name": "string",
+            "responsive": "boolean",
+            "dimensions": ["number", "number"],
+            "format": "string",
+            "adType": "string",
+            "tags": ["string"],
+            "ctaBtn": "string"
+        },
+    }
+```
+
+
+### Buyer App Schema
+```JSON
+     {
+        "email": "string",
+        "fullname": "string",
+        "address": {
+            "address": "string",
+            "city": "string",
+            "state": "string",
+            "zipcode": "string"
+        },
+        "contacts": {
+            "countryCode": "string",
+            "mobile": "string"
+        },
+        "buyerApp": {
+            "subscriberID": "string",
+            "bapURL": "string",
+            "country": "string",
+            "domain": "string",
+            "environment": "string",
+            "apptype": "string"
+        },
+        "audienceInsights": "boolean",
+        "audience": {
+            "sessions": "boolean",
+            "time": "boolean",
+            "location": "boolean",
+            "device": "boolean",
+            "searches": "boolean"
+        },
+        "payments": ["any"],
+        "setups": ["boolean"],
+        "adUnits": ["AdUnit"]
+    }
+```

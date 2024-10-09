@@ -1,0 +1,48 @@
+---
+title: 'Get Buyer'
+api: "GET {host}/buyer"
+description: 'API endpoint to retrieve buyer information'
+---
+
+### Headers
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for authorization.
+</ParamField>
+
+### Response
+
+- **200 OK**
+  ```json
+  {
+    "buyer": {
+      "email": "string",
+      "fullname": "string",
+      "address": {
+        "address": "string",
+        "city": "string",
+        "state": "string",
+        "zipcode": "string"
+      },
+      "contacts": {
+        "countryCode": "string",
+        "mobile": "string"
+      },
+      "buyerApp": {
+        "subscriberID": "string",
+        "bapURL": "string",
+        "country": "string",
+        "domain": "string",
+        "environment": "string",
+        "apptype": "string"
+      }
+    }
+  }
+  ```
+
+- **401 Unauthorized**
+  ```json
+  {
+    "error": "Unauthorized access"
+  }
+  ```

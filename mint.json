@@ -80,6 +80,15 @@
         "api-reference/ad_script/fetch",
         "api-reference/ad_script/select"
       ]
+    },
+    {
+      "group": "Buyer AdNet API",
+      "pages": [
+        "api-reference/buyer_adnet/model",
+        "api-reference/buyer_adnet/post_buyer",
+        "api-reference/buyer_adnet/get_buyer",
+        "api-reference/buyer_adnet/put_buyer"
+      ]
     }
   ],
   "footerSocials": {
